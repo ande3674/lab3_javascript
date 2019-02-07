@@ -1,0 +1,98 @@
+<!-- // add the input to the list in a <li> element
+// class="movie" or "tv-show"
+// .className property
+// clear the input and uncheck the box after added to list
+// ignore empty inputs, show alert message if already in list -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavsScript Functions with Arguments</title>
+  <style>
+      .tv-show {
+          color: green
+      }
+      .movie {
+          color: red;
+      }
+  </style>
+</head>
+<body>
+
+<!-- Starter page for Lab 3 -->
+<p>Enter a TV show (or movie) you like.</p>
+<label for="show-name"></label><input id="show-name">
+<input id="is-movie" type="checkbox"><label for="is-movie">Check this box if it is a movie?</label>
+<button id="save">Save to list</button>
+
+<ul id="list">
+
+</ul>
+
+<script>
+  document.getElementById("save").addEventListener("click", function(){
+    // Read the name of the tv show or movie:
+    var name = document.querySelector("#show-name").value;
+    // Is the movie checkbox checked?
+    var isMovie = document.getElementById("is-movie").checked;
+
+    if (name === ""){
+      //do nothing
+    }
+    else {
+      // is the name in the list?
+      //var current_list = document.getElementById("list");
+      var current_list = document.getElementById("list").getElementsByTagName("li");
+      //console.log(current_list);
+      var current_list_array = Array.prototype.slice.call(current_list);
+      //console.log(current_list_array);
+
+      var is_in_list = false;
+      if (current_list.length !== 0){
+        current_list_array.forEach(function(el) {
+          //console.log(el.innerHTML);
+          if (el.innerHTML === name){
+            is_in_list = true;
+          }
+        })
+      }
+
+
+      if (!is_in_list){
+        // Create a new <li> element containing the name of
+        // the show/movie, the value of the text input
+        var new_list_el = document.createElement("li");
+        new_list_el.innerHTML = `${name}`;
+
+        // If the show is a TV show (the checkbox is unchecked), add the class tv-show
+        // If the show is a movie, (the checkbox is checked) add the class movie
+        // You can set the .className property of an element to set its class,
+        // https://www.w3schools.com/jsref/prop_html_classname.asp
+        if (isMovie){
+          new_list_el.className = "movie";
+        }
+        else {
+          new_list_el.className = "tv-show";
+        }
+
+        //Add the new li element to the list.
+        let user_list = document.getElementById("list");
+        user_list.appendChild(new_list_el);
+      }
+      else {
+        alert('This is already in your list!')
+      }
+      // Clear the input and un-check the checkbox.
+      document.querySelector("#show-name").value = "";
+      document.querySelector("#is-movie").checked = false;
+    }
+  })
+
+/*
+(Tricky part) And, show an alert message if the show/movie is already in the list.
+Don't add the show/movie again.
+*/
+</script>
+
+</body>
+</html>

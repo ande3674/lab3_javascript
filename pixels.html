@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How Many Pixels?</title>
+</head>
+
+<body>
+  <p id="pixels">Pixels</p>
+
+  <script type="text/javascript">
+
+    var para = document.querySelector("#pixels");
+    var width_of_window = window.innerWidth;
+    var height_of_window = window.innerHeight;
+
+    para.innerHTML = "Pixels: " + width_of_window * height_of_window;
+
+
+    window.addEventListener("resize", windowResized);
+
+    function windowResized(){
+      alert('You resized the window!');
+      para = document.getElementById("pixels");
+      var width_of_window = window.innerWidth;
+      var height_of_window = window.innerHeight;
+
+      para.innerHTML = "Pixels: " + width_of_window * height_of_window;
+    }
+
+  </script>
+
+</body>

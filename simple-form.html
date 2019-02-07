@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Form</title>
+</head>
+<body>
+
+  <!-- input element -->
+  <p>Add something to your list:</p>
+  <input type="text" name="list-item" id="list-item">
+  <!-- a button -->
+  <button type="button" id="add-list-item">Add</button>
+  <!-- an unordered list -->
+  <h2>Your List:</h2>
+
+  <ul id="list">
+  </ul>
+
+  <script>
+    document.querySelector("#add-list-item").addEventListener('click', function(){
+
+      let user_list = document.querySelector('#list')
+      let itm = document.querySelector('#list-item').value
+
+      if (itm.length > 50){
+        alert('Task must be 50 characters or less!')
+      } else if (itm.length < 1) {
+        // do nothing
+      } else {
+        var new_li_element = document.createElement("li")
+        new_li_element.innerHTML = `${itm}`
+        user_list.appendChild(new_li_element)
+      }
+      document.querySelector('#list-item').value = "";
+
+    })
+  </script>
+
+
+
+</body>
