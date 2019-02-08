@@ -51,8 +51,24 @@
       // color "color-me" the random color generated
       let color_me = document.getElementById("color-me");
       color_me.style.color = random_color;
+    })
 
+    document.querySelector('#save-color').addEventListener("click", function() {
+      // get color of the text
+      let color_element = document.getElementById("color-me");
+      let color = color_element.style.color;
+      console.log(color);
+      // convert to hex
 
+      // add to table
+      // create tr element
+      // create th element
+      let color_table = document.querySelector('.table');
+      var new_tr_element = document.createElement("tr");
+      var new_th_element = document.createElement("th");
+      new_th_element.innerHTML = `${color}`
+      color_table.appendChild(new_tr_element);
+      color_table.appendChild(new_th_element);
     })
 
     function randomColor() {
