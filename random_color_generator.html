@@ -65,10 +65,14 @@
       // create th element
       let color_table = document.querySelector('.table');
       var new_tr_element = document.createElement("tr");
-      var new_th_element = document.createElement("th");
-      new_th_element.innerHTML = `${color}`
+      var new_th_element1 = document.createElement("th");
+      var new_th_element2 = document.createElement("th");
+      new_th_element1.style.color = color;
+      new_th_element1.innerHTML = "color";
+      new_th_element2.innerHTML = `${color}`;
       color_table.appendChild(new_tr_element);
-      color_table.appendChild(new_th_element);
+      new_tr_element.appendChild(new_th_element1);
+      new_tr_element.appendChild(new_th_element2);
     })
 
     function randomColor() {
