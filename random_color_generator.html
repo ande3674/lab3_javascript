@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <title>Random Color Generator</title>
+
+  <style>
+    h1 {
+      font-family: 'Lobster', cursive;
+    }
+    .first-block {
+      border: 2px solid black;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+    }
+    .table {
+      border: 2px solid black;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+      font-family: ;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="first-block">
+    <h1 id="color-me">Random Color Generator</h1> <br>
+    <button type="button" name="button" id="generate-random-color">Generate Random Color</button>
+    <button type="button" name="button" id="save-color">Save Color</button>
+  </div>
+
+  <div class="table">
+    <table>
+      <tr>
+        <th>Color</th>
+        <th>HEX Value</th>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript">
+
+    document.querySelector("#generate-random-color").addEventListener("click", function(){
+      var random_color = randomColor();
+
+      // color "color-me" the random color generated
+      let color_me = document.getElementById("color-me");
+      color_me.style.color = random_color;
+
+
+    })
+
+    function randomColor() {
+      var r = Math.floor(Math.random() * 255);   //Pick a random number between 0 and 1
+      var g = Math.floor(Math.random() * 255);   //Multiply by 255 to get a number in the correct range
+      var b = Math.floor(Math.random() * 255);   //Then convert it to an int
+      //Colors can be created as "rgb(33, 52, 15)" where the numbers are R, G, B values.
+      //This is expected as a string.
+      var colorString = "rgb(" + r + ", " + g + ", " + b + ")";
+      console.log(colorString);   //Avoid for production apps, OK for developing.
+      // You can see the output from this in the developer JavaScript console.
+      return colorString
+    }
+
+  </script>
+
+
+</body>
